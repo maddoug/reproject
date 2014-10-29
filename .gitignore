@@ -16,3 +16,4 @@ docs/api
 .coverage
 htmlcov
 dev
+reproject/deforest/deforest.c

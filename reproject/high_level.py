@@ -43,6 +43,7 @@ def reproject(input_data, output_projection, shape_out=None, projection_type='bi
             * 'biquadratic'
             * 'bicubic'
             * 'flux-conserving'
+            * 'deforest
 
     Returns
     -------
@@ -87,6 +88,15 @@ def reproject(input_data, output_projection, shape_out=None, projection_type='bi
         if has_celestial(wcs_in):
             from .interpolation import reproject_celestial
             return reproject_celestial(array_in, wcs_in, wcs_out, shape_out=shape_out, order=order)
+        else:
+            raise NotImplementedError("Currently only data with a WCS that includes a celestial component can be reprojected")
+
+    elif projection_type == 'deforest':
+
+        # For now only celestial reprojection is supported
+        if has_celestial(wcs_in):
+            from .deforest import reproject_celestial
+            return reproject_celestial(array_in, wcs_in, wcs_out, shape_out=shape_out)
         else:
             raise NotImplementedError("Currently only data with a WCS that includes a celestial component can be reprojected")
 
