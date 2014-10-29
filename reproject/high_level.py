@@ -43,7 +43,7 @@ def reproject(input_data, output_projection, shape_out=None, projection_type='bi
             * 'biquadratic'
             * 'bicubic'
             * 'flux-conserving'
-            * 'deforest
+            * 'deforest' (C.E. DeForest, Solar Physics 2004)
 
     Returns
     -------
